@@ -13,12 +13,15 @@ class Listview1Screen extends StatelessWidget {
       ),
       body:ListView(
         children: [
+          //el mapa agrega todos los elementos de options y los guada en game, porterior el ListTitle copia lo de game 
           ...options.map(
             (game) => ListTile(
               title: Text(game),
-              trailing: Icon(Icons.arrow_forward_ios_outlined),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
             )
-            ).toList()
+            ).toList(),
+
+            
 
           
             
