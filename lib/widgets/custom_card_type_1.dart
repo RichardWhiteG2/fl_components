@@ -1,8 +1,8 @@
 import 'package:fl_components/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class CustomCarType1 extends StatelessWidget {
-  const CustomCarType1({
+class CustomCardType1 extends StatelessWidget {
+  const CustomCardType1({
     Key? key,
   }) : super(key: key);
 
