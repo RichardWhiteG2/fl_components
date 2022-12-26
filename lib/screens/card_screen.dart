@@ -20,7 +20,15 @@ class CardScreen extends StatelessWidget {
            CustomCardType1(),
            //Para dar espacio entre las tarjetas 
            SizedBox(height: 10),
-           CustomCardType2()
+           CustomCardType2(),
+           SizedBox(height: 10),
+           CustomCardType2(),
+           SizedBox(height: 10),
+           CustomCardType2(),
+           SizedBox(height: 10),
+           CustomCardType2(),
+           SizedBox(height: 100),
+           
         ],
       ) 
 
