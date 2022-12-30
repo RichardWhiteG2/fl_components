@@ -8,6 +8,17 @@ class InputsScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    final GlobalKey<FormState>myFormKey = GlobalKey<FormState>();
+
+    final Map<String, String> formValues ={
+        'first_name': 'Ricardo',
+        'last_name' : 'Blanco',
+        'email'     : 'richard.white@outlook.com',
+        'password'  : '123456',
+        'role'      : 'Admin'
+    };
+
     return  Scaffold(
       appBar: AppBar(
         title: Text('Inputs y Forms'),
@@ -15,21 +26,42 @@ class InputsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: const[
-              CustomInputFiel(labelText: 'Nombre', hintText: 'Nombre usuario'),
-              SizedBox( height: 30 ),
-              
-              CustomInputFiel(labelText: 'Apellido', hintText: 'Apellido usuario'),
-              SizedBox( height: 30 ),
-              
-              CustomInputFiel(labelText: 'Correo', hintText: 'Correo usuario', keyboardType: TextInputType.emailAddress ,),
-              SizedBox( height: 30 ),
-              
-              CustomInputFiel(labelText: 'Contraseña', hintText: 'Contraseña usuario', obscureText: true),
-              SizedBox( height: 30 ),
+          child: Form(
+            key: myFormKey,
+            child: Column(
+              children: [
+                const CustomInputFiel(labelText: 'Nombre', hintText: 'Nombre usuario'),
+                const SizedBox( height: 30 ),
+                
+                const CustomInputFiel(labelText: 'Apellido', hintText: 'Apellido usuario'),
+               const  SizedBox( height: 30 ),
+                
+               const  CustomInputFiel(labelText: 'Correo', hintText: 'Correo usuario', keyboardType: TextInputType.emailAddress ,),
+               const  SizedBox( height: 30 ),
+                
+               const  CustomInputFiel(labelText: 'Contraseña', hintText: 'Contraseña usuario', obscureText: true),
+                const SizedBox( height: 30 ),
+          
+                ElevatedButton(
+                  child: const SizedBox(
+                    width: double.infinity,
+                    child: Center(child: const Text('Guardar'))
+                  ),
+                  onPressed: () {
 
-            ],
+                    FocusScope.of(context).requestFocus( FocusNode());
+                    //FocusScope Oculta el teclado 
+                    if(!myFormKey.currentState!.validate()){
+                      print('Formulario no válido');
+                      return;
+                    }
+                    //Todo: imprimir valores del formulario
+                    print(formValues);
+                  }, 
+                )
+          
+              ],
+            ),
           ),
         ),
       )
