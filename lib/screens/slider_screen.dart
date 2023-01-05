@@ -13,35 +13,70 @@ class _SliderScreenState extends State<SliderScreen> {
 
 
   double _sliderValue = 100;
-  
+  bool _sliderEnable = true;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
         title: const Text('Sliders & Checks'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Slider(
-              min: 50,
-              max: 400,
-              activeColor: AppTheme.primary,
-              value: _sliderValue, 
-              onChanged: ( value ){
-                _sliderValue =value;
-                setState(() {});
-                //print(value);
-              } 
+      body: Column(
+        children: [
+          Slider(
+            min: 50,
+            max: 400,
+            activeColor: AppTheme.primary,
+            value: _sliderValue, 
+            onChanged: _sliderEnable 
+            ?( value ){
+              _sliderValue =value;
+              setState(() {});
+              //print(value);
+            } 
+            : null
+          ),
+
+          Checkbox(
+            value: _sliderEnable  , 
+            onChanged: (value){
+              _sliderEnable=value ?? true ;
+              setState(() { });
+            }
+          ),
+
+
+          CheckboxListTile(
+            activeColor: AppTheme.primary,
+            title: const Text('Habilitar Slider'),
+            value: _sliderEnable, 
+            onChanged: (value) => setState(() { _sliderEnable = value ?? true ; })
+          ),
+
+          Switch(
+            value: _sliderEnable, 
+            onChanged: (value) => setState(() {
+              _sliderEnable =value;
+            })
+          ),
+          SwitchListTile(
+            activeColor: AppTheme.primary,
+            title: const Text('Habilitar Slider'),
+            value: _sliderEnable, 
+            onChanged: (value) => setState(() { _sliderEnable = value ?? true ; })
+          ),
+
+          const AboutListTile(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Image(
+                image: const NetworkImage('https://www.pngarts.com/files/2/Batman-PNG-Picture.png'),
+                fit: BoxFit.contain,
+                width: _sliderValue,
+              ),
             ),
-            Image(
-              image: NetworkImage('https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmF0bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80'),
-              fit: BoxFit.contain,
-              width: _sliderValue,
-            ),
-            const SizedBox(height: 50),
-          ],
-        ),
+          ),
+          
+        ],
       )
 
     );
