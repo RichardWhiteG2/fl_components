@@ -17,7 +17,8 @@ class AppRoutes{
     MenuOption(route: 'card', name: 'Tarjetas - Cars', screen: const CardScreen(), icon: Icons.credit_card),
     MenuOption(route: 'avatar', name: 'Circle Avatar', screen: const AvatarScreen(), icon: Icons.supervised_user_circle_outlined),
     MenuOption(route: 'animated', name: 'Animated Container', screen: const AnimatedScreen(), icon: Icons.play_circle_outline_rounded),
-    MenuOption(route: 'inputs', name: 'Text Inputs', screen: const InputsScreen(), icon: Icons.input_rounded)
+    MenuOption(route: 'inputs', name: 'Text Inputs', screen: const InputsScreen(), icon: Icons.input_rounded),
+    MenuOption(route: 'slider', name: 'Slider and Checks', screen: const SliderScreen(), icon: Icons.slow_motion_video_rounded)
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
